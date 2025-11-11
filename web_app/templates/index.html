@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Pose Detection - Web Version</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Body Pose Detection</h1>
+            <p>AI-powered body pose analysis in your browser</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Камера -->
+            <div class="camera-section">
+                <div class="video-container">
+                    <video id="video" autoplay playsinline></video>
+                    <canvas id="canvas"></canvas>
+                    <div id="overlay"></div>
+                </div>
+                
+                <div class="controls">
+                    <button id="startCamera" class="btn btn-primary">
+                        📷 Start Camera
+                    </button>
+                    <button id="capturePose" class="btn btn-success" disabled>
+                        🎯 Detect Pose
+                    </button>
+                    <button id="stopCamera" class="btn btn-danger" disabled>
+                        ⏹️ Stop Camera
+                    </button>
+                </div>
+            </div>
+
+            <!-- Результаты -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h3>Detection Results</h3>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>📊 Statistics</h4>
+                        <div id="stats"></div>
+                    </div>
+                    <div class="result-card">
+                        <h4>🖼️ Annotated Image</h4>
+                        <img id="annotatedImage" style="max-width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="landmarks-list">
+                    <h4>📍 Detected Landmarks</h4>
+                    <div id="landmarksList"></div>
+                </div>
+            </div>
+
+            <!-- Статус -->
+            <div class="status-section">
+                <div id="status" class="status">
+                    👆 Click "Start Camera" to begin
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by MediaPipe Pose Detection | Python + Flask</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
